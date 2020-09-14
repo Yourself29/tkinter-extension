@@ -1,6 +1,6 @@
 from tkinter import *
 
-class Table(tk.Frame) :
+class Table(Frame) :
 
     def set_value( self,value, row = 0, column = 0, n = 0, type = "c") :
         if type == "h" :
@@ -30,7 +30,7 @@ class Table(tk.Frame) :
         if len(self.heading) != 0 : 
             i = 0
             for text in self.heading :
-                exec("self.h"+str(i)+'='+"tk.Label(self, text = text, bd = 2, font = self.h_font, relief = tk.RAISED)")
+                exec("self.h"+str(i)+'='+"Label(self, text = text, bd = 2, font = self.h_font, relief = RAISED)")
                 exec("self.h"+str(i)+'.grid(column = '+str(i)+", row = 0, sticky = \"nsew\")")
                 i+=1
 
@@ -38,5 +38,5 @@ class Table(tk.Frame) :
            
             for ro in range(self.rows) :
                 r = ro+1
-                exec("self.c_"+str(c)+'_'+str(r)+" = tk.Label(self, bd = 2, relief = tk.RAISED, font = self.font, text = self.common_text)")
+                exec("self.c_"+str(c)+'_'+str(r)+" = Label(self, bd = 2, relief = RAISED, font = self.font, text = self.common_text)")
                 exec("self.c_"+str(c)+'_'+str(r)+".grid(column = "+str(c)+', row = '+str(r)+", sticky = \'nsew\')")
