@@ -1,2 +1,5 @@
 # tkinter-extension
-An extension to tkinter (with more widgets)
+
+
+
+###Extension for tkinter (with more widgets)
