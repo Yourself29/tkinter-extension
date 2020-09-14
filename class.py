@@ -15,10 +15,11 @@ class PlainTable(Frame) :
 
             exec("self.c_"+str(column)+'_'+str(row)+"[\'text\'] = "+'\''+ str(value)+'\'')
     
-    def __init__(self, parent, common_text = "", columns = 1, rows = 1, heading = list(), font = ("Courier", '15'), h_font = ("Courier", '20'), *args, **kwargs) :
+    def __init__(self, parent, border = 2, common_text = "", columns = 1, rows = 1, heading = list(), font = ("Courier", '15'), h_font = ("Courier", '20'), *args, **kwargs) :
         tk.Frame.__init__(self, parent, *args, **kwargs)
         self.heading = heading
         self.rows = rows
+        self.border = border
         self.columns = columns
         self.common_text = common_text
         self.font = font
@@ -30,7 +31,7 @@ class PlainTable(Frame) :
         if len(self.heading) != 0 : 
             i = 0
             for text in self.heading :
-                exec("self.h"+str(i)+'='+"Label(self, text = text, bd = 2, font = self.h_font, relief = RAISED)")
+                exec("self.h"+str(i)+'='+"Label(self, text = text, bd = self.border, font = self.h_font, relief = RAISED)")
                 exec("self.h"+str(i)+'.grid(column = '+str(i)+", row = 0, sticky = \"nsew\")")
                 i+=1
 
@@ -38,5 +39,5 @@ class PlainTable(Frame) :
            
             for ro in range(self.rows) :
                 r = ro+1
-                exec("self.c_"+str(c)+'_'+str(r)+" = Label(self, bd = 2, relief = RAISED, font = self.font, text = self.common_text)")
+                exec("self.c_"+str(c)+'_'+str(r)+" = Label(self, bd = self.border, relief = RAISED, font = self.font, text = self.common_text)")
                 exec("self.c_"+str(c)+'_'+str(r)+".grid(column = "+str(c)+', row = '+str(r)+", sticky = \'nsew\')")
