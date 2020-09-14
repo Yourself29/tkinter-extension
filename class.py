@@ -1,10 +1,19 @@
 from tkinter import *
 
 class PlainTable(Frame) :
+    
+    def get_val( self, type = 'c', column = 0, row = 0, n = 0) :
+        if type == 'h' :
+            if n < 0 : raise ValueError(f"error : n = {n}, it should be >= 0")
+            if n >= len(self.heading) : raise ValueError(f"error : n >= {n}, it should be < {len(self.heading)}")
+            
+            exec(f"val = self.h{n}[\'text\']")
+            return val
+        #need to do it for type == "c"
 
-    def set_value( self,value, row = 0, column = 0, n = 0, type = "c") :
+    def set_val( self,value, row = 0, column = 0, n = 0, type = "c") :
         if type == "h" :
-            if n >= len(self.heading) : n = len(self.heading)-1
+            if n >= len(self.heading) : raise ValueError(f"error : n >= {n}, it should be < {len(self.heading)}")#n = len(self.heading)-1
             if n < 0 : n = 0
             exec("self.h"+str(n)+"[\'text\'] = "+ '\'' +str(value)+'\'')
         else :
