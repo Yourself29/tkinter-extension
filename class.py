@@ -1,6 +1,6 @@
 from tkinter import *
 
-class Table(Frame) :
+class PlainTable(Frame) :
 
     def set_value( self,value, row = 0, column = 0, n = 0, type = "c") :
         if type == "h" :
