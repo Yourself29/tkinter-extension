@@ -9,7 +9,14 @@ class PlainTable(Frame) :
             
             exec(f"val = self.h{n}[\'text\']")
             return val
-        #need to do it for type == "c"
+        elif type == "c" :
+            if column >= self.columns : raise ValueError(f"error : columnumn = {column}, it should be < {self.columns}")#column = self.columns-1
+            if row > self.rows : raise ValueError(f"error : row = {row}, should be <= {self.rows} ")#row = self.rows
+            if row < 1 : raise ValueError(f"error : row = {row}, should be >= {1} ")#row = 1
+            if column < 0 : raise ValueError(f"error : column = {column}, should be >= {0} ")#column = 0
+                
+            exec(f"val = self.c_{column}_{row}[\'text\']")
+            return val
 
     def set_val( self,value, row = 0, column = 0, n = 0, type = "c") :
         if type == "h" :
