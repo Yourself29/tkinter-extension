@@ -10,6 +10,8 @@ class PlainTable(Frame) :
     def del_column(self, n) :
         if n < 0 : raise ValueError(f"error : n = {n}, it should be >= 0")
         if n >= self.columns : raise ValueError(f"error : n = {n}, it should be < {self.columns}")
+            
+        
         
         #Need to finish
   
