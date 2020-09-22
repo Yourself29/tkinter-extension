@@ -5,7 +5,7 @@ from tkinter import *
 
 # Tables
 
-class PlainTable(tk.Frame) :
+class PlainTable(Frame) :
 
     def del_row(self, n) :
         if n < 0 : raise ValueError(f"error : n = {n}, it should be >= 0")
@@ -33,7 +33,7 @@ class PlainTable(tk.Frame) :
         #Make a new table
         for c in range(self.columns) :
             for r in range(self.rows) :
-                exec("self.c_"+str(c)+'_'+str(r)+f" = tk.Label(self, bd = self.border, relief = tk.RAISED, font = self.font, text = data[{c}][{r}])")
+                exec("self.c_"+str(c)+'_'+str(r)+f" = Label(self, bd = self.border, relief = RAISED, font = self.font, text = data[{c}][{r}])")
                 exec("self.c_"+str(c)+'_'+str(r)+".grid(column = "+str(c)+', row = '+str(r+1)+", sticky = \'nsew\')")
         
 
@@ -74,11 +74,11 @@ class PlainTable(tk.Frame) :
         #Make a new table
 
         for i in range(len(self.heading)) :
-            exec("self.h"+str(i)+'='+"tk.Label(self, text = h_data[i], bd = self.border, font = self.h_font, relief = tk.RAISED)")
+            exec("self.h"+str(i)+'='+"Label(self, text = h_data[i], bd = self.border, font = self.h_font, relief = RAISED)")
             exec("self.h"+str(i)+'.grid(column = '+str(i)+", row = 0, sticky = \"nsew\")")
         for c in range(self.columns) :
             for r in range(self.rows) :
-                exec("self.c_"+str(c)+'_'+str(r)+f" = tk.Label(self, bd = self.border, relief = tk.RAISED, font = self.font, text = data[{c}][{r}])")
+                exec("self.c_"+str(c)+'_'+str(r)+f" = Label(self, bd = self.border, relief = RAISED, font = self.font, text = data[{c}][{r}])")
                 exec("self.c_"+str(c)+'_'+str(r)+".grid(column = "+str(c)+', row = '+str(r+1)+", sticky = \'nsew\')")
         if self.columns == 0 : self.destroy()
 
@@ -130,7 +130,7 @@ class PlainTable(tk.Frame) :
         if len(self.heading) != 0 : 
             i = 0
             for text in self.heading :
-                exec("self.h"+str(i)+'='+"tk.Label(self, text = text, bd = self.border, font = self.h_font, relief = tk.RAISED)")
+                exec("self.h"+str(i)+'='+"Label(self, text = text, bd = self.border, font = self.h_font, relief = RAISED)")
                 exec("self.h"+str(i)+'.grid(column = '+str(i)+", row = 0, sticky = \"nsew\")")
                 i+=1
 
@@ -138,5 +138,5 @@ class PlainTable(tk.Frame) :
            
             for ro in range(self.rows) :
                 r = ro+1
-                exec("self.c_"+str(c)+'_'+str(ro)+" = tk.Label(self, bd = self.border, relief = tk.RAISED, font = self.font, text = self.common_text)")
+                exec("self.c_"+str(c)+'_'+str(ro)+" = Label(self, bd = self.border, relief = RAISED, font = self.font, text = self.common_text)")
                 exec("self.c_"+str(c)+'_'+str(ro)+".grid(column = "+str(c)+', row = '+str(r)+", sticky = \'nsew\')")
